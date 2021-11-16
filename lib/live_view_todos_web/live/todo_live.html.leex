@@ -1,10 +1,14 @@
 <form action="#" phx-submit="add">
 <%= text_input :todo, :title, placeholder: "what do you wany to get done?" %>
-<%= submit "Add", phx_disable_with: "Adding..."  %>
+<%= submit "Add" , phx_disable_with: "Adding..."  %>
 </form>
  <%= for todo <- @todos  do %>
 <div> <%= checkbox(:todo, :done, phx_click: "toggle_done", phx_value_id: todo.id, value: todo.done) %>
+
+
 <%= todo.title %>
+
+<button type="button" phx-click="toggle_delete", phx-value-id= "<%=todo.id%>"  class="btn btn-warning">Delete</button >
 </div>
 
 <% end %>
